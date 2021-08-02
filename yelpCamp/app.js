@@ -3,14 +3,17 @@ const path = require("path");
 const mongoose = require('mongoose');
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
+const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-Override");
 
 
-
+// require our routes 
 const campgrounds = require("./routes/campgrounds")
 const reviews = require("./routes/reviews")
 
+
+// connecting mongo database with base localhost
 mongoose.connect("mongodb://localhost:27017/yelp-camp", {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -27,30 +30,40 @@ db.once("open", () => {
 const app = express();
 
 
+
+// set view engine to ejs, but could  handlebars etc...
 app.engine("ejs", ejsMate)
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+
+// express middleware
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
+
+// express-session configs
 const sessionConfig = {
     secret: "thisshouldbeabettersecret!",
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // formula to get the date out of milliseconds 1000ms 60seconds 60 mins 24 hours 7 days
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
 }
 app.use(session(sessionConfig));
+app.use(flash());
 
 
-
-
-
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+})
+// using routes with prefix 
 app.use("/campgrounds", campgrounds);
 app.use("/campgrounds/:id/reviews", reviews);
 
@@ -74,7 +87,7 @@ app.use((err, req, res, next) => {
 })
 
 
-
+// starting our port 
 app.listen(3001, () => {
     console.log("Server listening on port 3001");
 });
