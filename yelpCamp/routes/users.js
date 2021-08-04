@@ -5,16 +5,17 @@ const passport = require("passport")
 const User = require("../models/user");
 const users = require("../controllers/users")
 
-router.get("/register", users.renderRegister);
 
 
-// creating a new user to sign in 
-router.post("/register", catchAsync(users.register));
+router.route("/register")
+    .get(users.renderRegister)
+    .post(catchAsync(users.register))
 
-router.get("/login", users.renderLogin);
 
+router.route("/login")
+    .get(users.renderLogin)
+    .post(passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }), users.login)
 
-router.post("/login", passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }), users.login);
 
 router.get("/logout", users.logout)
 
