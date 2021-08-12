@@ -12,4 +12,11 @@ router.get('/contact', function (req, res, next) {
 
 });
 
+router.get('/signup', function (req, res, next) {
+  res.render("../views/home/signup.ejs");
+
+});
+
+
+
 module.exports = router;
