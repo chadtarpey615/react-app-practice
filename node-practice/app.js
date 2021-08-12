@@ -4,10 +4,13 @@ const path = require('path');
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const cookieParser = require('cookie-parser');
+const methodOverride = require("method-Override");
+
 const logger = require('morgan');
 const PORT = 4000
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const campgroundRoutes = require("./routes/campgrounds");
 
 
 
@@ -16,7 +19,13 @@ mongoose.connect("mongodb://localhost:27017/chads-camp", {
   useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false
-})
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("that database be connected my man !!!")
+});
 const app = express();
 
 // view engine setup
@@ -34,6 +43,7 @@ app.use(methodOverride("_method"));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use("/campgrounds", campgroundRoutes);
 
 
 
