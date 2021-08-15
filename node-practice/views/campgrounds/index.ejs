@@ -13,10 +13,13 @@
                 <li class="list-group-itm text-muted"><%= campground.price %> </li>
             </ul>
             <a href=></a>
-            <button class="btn btn-sm btn-success">Click to see more info on this campground
-                <a href="/campgrounds/<%= campground._id%>/show"></a>
+            <a href="/campgrounds/<%= campground._id%>">
+                <button class="btn btn-sm btn-success">Click to see more info on this campground
+                </button>
 
-            </button>
+            </a>
+
+
         </div>
         <% } %>
     </div>
