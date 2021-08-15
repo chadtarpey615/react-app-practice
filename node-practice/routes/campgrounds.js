@@ -8,9 +8,10 @@ router.get("/new", (req, res) => {
 
 });
 
-router.get("/show", async (req, res) => {
-    const campground = await Campground.find({})
-    res.render("campgrounds/show", { campground })
+router.get("/", async (req, res) => {
+    const campgrounds = await Campground.find({})
+    res.render("campgrounds/index", { campgrounds })
+    // console.log("campground/index", campground)
 })
 
 router.post("/", async (req, res) => {
@@ -20,7 +21,7 @@ router.post("/", async (req, res) => {
 
     await campground.save();
     res.redirect("campgrounds/new")
-    console.log(req.body.campground)
+    // console.log(req.body.campground)
 })
 
 module.exports = router;

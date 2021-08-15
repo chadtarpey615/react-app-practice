@@ -2,16 +2,22 @@
 
 <div class="row mb-5">
     <div class="col-6">
+        <% for (let campground of campgrounds) { %>
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title"><%= campground.title %></h5>
                 <p class="card-text"><%= campground.description %> </p>
             </div>
-            hello
             <ul class="list-group list-group-flush">
                 <li class="list-group-itm text-muted"><%= campground.location %> </li>
                 <li class="list-group-itm text-muted"><%= campground.price %> </li>
             </ul>
+            <a href=></a>
+            <button class="btn btn-sm btn-success">Click to see more info on this campground
+                <a href="/campgrounds/<%= campground._id%>/show"></a>
+
+            </button>
         </div>
+        <% } %>
     </div>
 </div>
