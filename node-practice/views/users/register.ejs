@@ -5,13 +5,22 @@
 
     </div>
     <div class="col-md-8">
-        <form action="">
-            <label for="first name"></label>
-            <input type="text" name="first name" placeholder="first name">
-            <label for="last name"></label>
-            <input type="text" name="last name" placeholder="last name">
-            <label for="email"></label>
-            <input type="text" name="email" placeholder="email">
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="username"></label>
+                <input class="form-control" type="text" name="username" placeholder="username">
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" for="email"></label>
+                <input class="form-control" type="text" name="email" placeholder="email">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password"></label>
+                <input class="form-control" type="password" name="password" placeholder="password">
+            </div>
+            <button class="btn btn-success">Register</button>
         </form>
     </div>
 
