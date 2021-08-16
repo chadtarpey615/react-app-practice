@@ -1,36 +1,36 @@
 <% layout("layouts/boilerplate")%>
 
-<div class="row mb-5">
-    <div class="col-6">
-        <% for (let campground of campgrounds) { %>
-        <div class="row">
-            <div class="col-md-4">
-                <% if (campground.image.length) { %>
-                <img class="img-fluid" src="<%= campground.image %> " alt="">
-                <% } else { %>
-                <img src="https://res.cloudinary.com/douqbebwk/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png"
-                    alt="">
-                <% } %>
-            </div>
+
+<% for (let campground of campgrounds) { %>
+<div class="card mb-4">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <% if (campground.image.length) { %>
+            <img class="img-fluid" src="<%= campground.image %> " alt="">
+            <% } else { %>
+            <img src="https://res.cloudinary.com/douqbebwk/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png"
+                alt="">
+            <% } %>
         </div>
-        <div class="card mb-3">
+        <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title"><%= campground.title %></h5>
                 <p class="card-text"><%= campground.description %> </p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-itm text-muted"><%= campground.location %> </li>
-                <li class="list-group-itm text-muted"><%= campground.price %> </li>
+                <li class="list-group-itm text-muted">$ <%= campground.price %> dollars a night</li>
             </ul>
             <a href=></a>
             <a href="/campgrounds/<%= campground._id%>">
-                <button class="btn btn-sm btn-success">Click to see more info on this campground
+                <button class="btn btn-sm btn-success mt-2">Click to see more info on this campground
                 </button>
 
             </a>
 
-
         </div>
-        <% } %>
+
     </div>
+    <% } %>
+</div>
 </div>

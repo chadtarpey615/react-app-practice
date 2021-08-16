@@ -9,8 +9,9 @@ const methodOverride = require("method-Override");
 const logger = require('morgan');
 const PORT = 4000
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const userRoutes = require('./routes/users');
 const campgroundRoutes = require("./routes/campgrounds");
+
 
 
 
@@ -42,7 +43,7 @@ app.use(methodOverride("_method"));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', userRoutes);
 app.use("/campgrounds", campgroundRoutes);
 
 
