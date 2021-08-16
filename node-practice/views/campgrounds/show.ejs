@@ -1,17 +1,27 @@
 <% layout("layouts/boilerplate")%>
+<div class="card mb-3">
 
-<div class="row">
-    <div class="col-6">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5><%= campground.title %> </h5>
-                <p><%= campground.description %> </p>
-
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><%= campground.location %> </li>
-                <li class="list-group-item">$<%= campground.price %> </li>
-            </ul>
+    <div class="row">
+        <div class="col-md-4">
+            <% if (campground.image.length) { %>
+            <img class="img-fluid" src="<%= campground.image %> " alt="">
+            <% } else { %>
+            <img src="https://res.cloudinary.com/douqbebwk/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png"
+                alt="">
+            <% } %>
         </div>
     </div>
+    <div class="col-6 justify-content-center offset-3">
+
+        <div class="card-body">
+            <h5><%= campground.title %> </h5>
+            <p><%= campground.description %> </p>
+
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= campground.location %> </li>
+            <li class="list-group-item">$<%= campground.price %> </li>
+        </ul>
+    </div>
+</div>
 </div>
