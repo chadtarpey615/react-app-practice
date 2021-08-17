@@ -8,10 +8,19 @@ router.get("/register", (req, res) => {
   res.render("users/register")
 });
 
+router.get("/login", (req, res) => {
+  res.render("users/login")
+});
+
 router.post("/register", async (req, res) => {
   const { email, username, password } = req.body;
   const newUser = await new User({ email, username })
   await newUser.save();
+  res.redirect("/campgrounds")
+});
+
+router.post("/login", async (req, res) => {
+  console.log(req);
   res.redirect("/campgrounds")
 })
 
