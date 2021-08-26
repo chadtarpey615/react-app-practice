@@ -20,7 +20,9 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log(req);
+  const { username } = req.params;
+  const user = User.findById(username)
+  console.log("user info-----", user);
   res.redirect("/campgrounds")
 })
 
