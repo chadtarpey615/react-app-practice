@@ -13,7 +13,7 @@ class GitHub {
 
         const profile = await profileResponse.json();
         const repos = await repoResponse.json();
-
+        console.log(this.client_id)
 
         return {
             profile,
