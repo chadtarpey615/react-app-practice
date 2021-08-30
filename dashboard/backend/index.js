@@ -19,8 +19,8 @@ mongoose.connect(process.env.DB_HOST, {
     useUnifiedTopology: true,
 })
     .then(() => {
-        app.listen(port, () => console.log(Server and database running on ${ port }, http://localhost:${port}));
-})
+        app.listen(port, () => console.log(`Server and database running on ${port}, http://localhost:${port}`));
+    })
     .catch((err) => {
         console.log(err);
     });
