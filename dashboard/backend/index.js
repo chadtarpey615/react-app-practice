@@ -13,8 +13,7 @@ app.use('/', userRoute);
 const port = process.env.PORT || 8080;
 
 mongoose.connect(process.env.DB_HOST, {
-    useCreateIndex: true,
-    useFindAndModify: false,
+
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
