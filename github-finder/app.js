@@ -1,6 +1,9 @@
 // init github class
 const github = new GitHub;
 
+// init ui class
+
+const ui = new UI;
 // Search Input
 
 const searchUser = document.getElementById("searchUser");
@@ -14,7 +17,15 @@ searchUser.addEventListener("keyup", e => {
         // make http call
         github.getUser(userText)
             .then(data => {
-                console.log(data)
+                if (data.profile.message === "Not Found") {
+                    //show alert
+
+                } else {
+                    // show profile
+                    ui.showProfile(data.profile);
+                }
             })
+    } else {
+        // clear profile
     }
 })
