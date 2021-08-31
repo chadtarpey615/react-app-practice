@@ -1,3 +1,5 @@
+// maybe add days of the week 
+
 // Storage Controller
 const StorageCtrl = (function () {
     //public methods
