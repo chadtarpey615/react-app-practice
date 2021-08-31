@@ -31,11 +31,38 @@ const StorageCtrl = (function () {
                 items = JSON.parse(localStorage.getItem("items"))
             }
             return items;
+        },
+
+        updateItemStorage: function (updatedItem) {
+            let items = JSON.parse(localStorage.getItem("items"));
+
+            items.forEach(function (item, index) {
+                if (updatedItem.id === item.id) {
+                    items.splice(index, 1, updatedItem)
+                }
+            })
+            localStorage.setItem("items", JSON.stringify(items));
+
+        },
+        deleteItemFromStorage: function (id) {
+            let items = JSON.parse(localStorage.getItem("items"));
+
+            items.forEach(function (item, index) {
+                if (id === item.id) {
+                    items.splice(index, 1)
+                }
+            })
+            localStorage.setItem("items", JSON.stringify(items));
+        },
+
+        clearItemsFromStorage: function () {
+            localStorage.removeItem("items");
         }
     }
 })();
 // Item Controller
 const itemCtrl = (function () {
+
     // item constructor
     const Item = function (id, name, calories) {
         this.id = id;
@@ -396,7 +423,12 @@ const App = (function (itemCtrl, StorageCtrl, UICtrl) {
         // get total calories
         const totalCalories = itemCtrl.getTotalCalories();
         //add total calories to the ui
-        UICtrl.showTotalCalories(totalCalories)
+        UICtrl.showTotalCalories(totalCalories);
+
+        // update local storage
+        StorageCtrl.updateItemStorage(updatedItem);
+
+        UICtrl.clearEditState();
 
         e.preventDefault();
     }
@@ -418,7 +450,11 @@ const App = (function (itemCtrl, StorageCtrl, UICtrl) {
         // get total calories
         const totalCalories = itemCtrl.getTotalCalories();
         //add total calories to the ui
-        UICtrl.showTotalCalories(totalCalories)
+        UICtrl.showTotalCalories(totalCalories);
+
+        // delete from local storage
+        StorageCtrl.deleteItemFromStorage(currentItem.id);
+
         UICtrl.clearEditState();
         e.preventDefault();
 
@@ -435,6 +471,10 @@ const App = (function (itemCtrl, StorageCtrl, UICtrl) {
 
         //remove from ui
         UICtrl.removeItems();
+
+        // clear from local storage
+
+        StorageCtrl.clearItemsFromStorage();
 
         // hide ul
         UICtrl.hideList();
