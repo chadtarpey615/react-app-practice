@@ -8,7 +8,7 @@ class UI {
         this.formState = "add";
 
     }
-
+    // show all posts
     showPosts(posts) {
         let output = "";
 
@@ -55,6 +55,8 @@ class UI {
         }, 3000)
     }
 
+
+    // clear alert
     clearAlert() {
         const currentAlert = document.querySelector(".alert");
 
@@ -63,10 +65,58 @@ class UI {
         }
     }
 
+    // clear all fields
     clearFields() {
         this.titleInput.value = "";
         this.bodyInput.value = "";
 
+    }
+
+    // fill form to edit
+    fillForm(data) {
+        this.titleInput.value = data.title;
+        this.bodyInput.value = data.body;
+        this.idInput.value = data.id;
+
+        this.changeFormState("edit");
+    }
+
+    // clear id input
+    clearIdInput() {
+        this.idInput.value = "";
+    }
+
+    // change form state
+    changeFormState(type) {
+        if (type === "edit") {
+            this.postInput.textContent = "Update Post"
+            this.postInput.className = "post-submit btn btn-warning btn-block";
+
+            // create cancel button
+            const button = document.createElement("button");
+            button.className = "post-cancel btn btn-light btn-block";
+            button.appendChild(document.createTextNode("Cancel Edit"));
+
+            // get parent
+            const cardForm = document.querySelector(".card-form");
+            // get element to insert before
+            const formEnd = document.querySelector(".form-end");
+            // insert cancel button
+            cardForm.insertBefore(button, formEnd)
+        } else {
+            this.postInput.textContent = "Post It"
+            this.postInput.className = "post-submit btn btn-primary btn-block";
+
+            // remove cancel button if there
+            if (document.querySelector(".post-cancel")) {
+                document.querySelector(".post-cancel").remove();
+
+            }
+            // clear id from hidden field
+            this.clearIdInput();
+            // clear text
+            this.clearFields();
+        }
     }
 }
 
