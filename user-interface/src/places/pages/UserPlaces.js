@@ -6,11 +6,12 @@ const dummyPlaces = [
     {
         id: "p1",
         title: "Empire State Building",
+        description: "One of the most famous sku scrapers in the world!",
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAe1Lg2g2LI2TFIpcJYW5b-XcP8Bg8fFjG9w&usqp=CAU",
         address: "20 W 34th St, New York, NY 10001",
         location: {
-            lat: "40.7484405",
-            lng: "-73,9878584"
+            lat: 40.7484405,
+            lng: -73.9878584
         },
         creator: "u1"
     },
@@ -20,8 +21,8 @@ const dummyPlaces = [
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAe1Lg2g2LI2TFIpcJYW5b-XcP8Bg8fFjG9w&usqp=CAU",
         address: "20 W 34th St, New York, NY 10001",
         location: {
-            lat: "40.7484405",
-            lng: "-73,9878584"
+            lat: 40.7484405,
+            lng: -73.9878584
         },
         creator: "u2"
     }
