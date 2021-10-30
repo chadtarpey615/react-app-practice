@@ -36,7 +36,7 @@ const signup = async (req, res, next) => {
         return next(new HttpError("Invalid inputs, please check your singup info", 422))
     }
 
-    const { name, email, password, places } = req.body
+    const { name, email, password } = req.body
     let existingUser
     try {
         existingUser = await User.findOne({ email: email })
@@ -58,7 +58,7 @@ const signup = async (req, res, next) => {
         email,
         image: "https://live.staticflickr.com/7631/26849088292_36fc52ee90+b.jpg",
         password,
-        places
+        places: []
     })
 
     try {
@@ -102,3 +102,6 @@ const login = async (req, res, next) => {
 exports.getUsers = getUsers
 exports.signup = signup
 exports.login = login
+
+
+
