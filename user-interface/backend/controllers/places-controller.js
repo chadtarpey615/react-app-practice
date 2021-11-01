@@ -64,7 +64,7 @@ const createPlace = async (req, res, next) => {
     if (!errors.isEmpty()) {
         console.log(errors)
 
-        next(new HttpError("Invalid inputs, please check your data", 422))
+        return next(new HttpError("Invalid inputs, please check your data", 422))
     }
 
     const { title, description, address, creator } = req.body
@@ -113,13 +113,13 @@ const createPlace = async (req, res, next) => {
 
     // with database
     try {
-        const sess = await mongoose.startSession()
+        const sess = await mongoose.startSession();
+        sess.startTransaction();
+        await createdPlace.save({ session: sess });
+        user.places.push(createdPlace);
+        await user.save({ session: sess });
+        await sess.commitTransaction();
 
-        sess.startTransaction()
-        await createdPlace.save({ session: sess })
-        user.places.push(createdPlace)
-        await user.save({ session: sess })
-        await sess.commitTransaction()
 
     } catch (error) {
         const err = new HttpError("Creating place failed please try again", 500)
