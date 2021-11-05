@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import Card from "../../shared/components/UIElements/Card"
 import Input from "../../shared/components/FormElements/Input"
 import Button from "../../shared/components/FormElements/Button"
+import ImageUpload from "../../shared/components/FormElements/ImageUpload"
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/validators"
 import { useForm } from "../../shared/hooks/form-hook"
 import { AuthContext } from "../../shared/context/auth-context"
@@ -31,6 +32,8 @@ const Auth = (props) => {
 
     const authSubmitHandler = async (event) => {
         event.preventDefault();
+
+        console.log(formState.inputs)
 
         if (isLogin) {
             try {
@@ -122,6 +125,7 @@ const Auth = (props) => {
                             onInput={inputHandler}
                         />
                     }
+                    {!isLogin && <ImageUpload center id="image" onInput={inputHandler} />}
                     <Input
                         id="email"
                         element="input"
