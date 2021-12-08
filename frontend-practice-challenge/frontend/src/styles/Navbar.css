@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: blue;
+}
+
+.navbar-left {
+  display: flex;
+}
+
+.navbar-right {
+  display: flex;
+}
+
+.navbar ul li {
+  text-transform: uppercase;
+  list-style: none;
+  text-decoration-style: none;
+  padding-right: 15px;
+  font-size: 20px;
+}

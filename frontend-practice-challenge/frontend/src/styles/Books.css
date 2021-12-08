@@ -1,0 +1,9 @@
+.books {
+  margin-top: 40px;
+}
+
+.book-display {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
