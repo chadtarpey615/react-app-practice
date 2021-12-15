@@ -14,17 +14,17 @@ const Navbar = () => {
         }
     };
     return (
-        <footer className='navbar'>
-            <nav className='navbarNav'>
-                <ul className='navbarListItems'>
+        <footer className="navbar">
+            <nav className="navbarNav">
+                <ul className="navbarListItems">
                     <li
-                        className='navbarListItem'
+                        className="navbarListItem"
                         onClick={() => navigate("/")}
                     >
                         <ExploreIcon
                             fill={pathMatchRoute("/") ? "#2c2c2c" : "#8f8f8f"}
-                            width='36px'
-                            height='36px'
+                            width="36px"
+                            height="36px"
                         />
                         <p
                             className={
@@ -38,7 +38,7 @@ const Navbar = () => {
                     </li>
 
                     <li
-                        className='navbarListItem'
+                        className="navbarListItem"
                         onClick={() => navigate("/offers")}
                     >
                         <OfferIcon
@@ -47,8 +47,8 @@ const Navbar = () => {
                                     ? "#2c2c2c"
                                     : "#8f8f8f"
                             }
-                            width='36px'
-                            height='36px'
+                            width="36px"
+                            height="36px"
                         />
                         <p
                             className={
@@ -57,12 +57,12 @@ const Navbar = () => {
                                     : "navbarListItemName"
                             }
                         >
-                            Offer
+                            Offers
                         </p>
                     </li>
 
                     <li
-                        className='navbarListItem'
+                        className="navbarListItem"
                         onClick={() => navigate("/profile")}
                     >
                         <PersonOutlineIcon
@@ -71,8 +71,8 @@ const Navbar = () => {
                                     ? "#2c2c2c"
                                     : "#8f8f8f"
                             }
-                            width='36px'
-                            height='36px'
+                            width="36px"
+                            height="36px"
                         />
                         <p
                             className={
