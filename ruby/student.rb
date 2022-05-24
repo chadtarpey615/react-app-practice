@@ -1,6 +1,11 @@
+require_relative 'crud'
+
+#  create a class 
 class Student
+    include Crud
     # getter and setter with attr_accessor
     attr_accessor :first_name, :last_name, :email, :username, :password
+
     #  only getter not setter method
     # attr_reader :username
 
@@ -33,5 +38,20 @@ end
 chad = Student.new("chad", "Tarpey", "chadtip", "chad@gmail.com", "123456")
 john = Student.new("john", "Tarpey", "johnny", "john@gmail.com", "123456")
 
-puts chad
-puts john
+# puts chad
+# puts john
+
+
+
+
+users = [
+          { username: "chad", password: "password1" },
+          { username: "jack", password: "password2" },
+          { username: "arya", password: "password3" },
+          { username: "jonsnow", password: "password4" },
+          { username: "heisenberg", password: "password5" }
+        ]
+
+
+   hashed_users = Crud.create_secure_users(users)     
+puts hashed_users
